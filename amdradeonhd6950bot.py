@@ -8,7 +8,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print("--------------------")
-    await client.change_presence(game=discord.Game(name='도움말 = /A 입력', type=1))
+    await client.change_presence(game=discord.Game(name='', type=1))
 @client.event
 async def on_message(message):
     if message.content.startswith('/A'):
@@ -43,9 +43,8 @@ async def on_message(message):
     if message.content.startswith('a4딸역'):
         await client.send_message(message.channel, "https://m.youtube.com/watch?v=fRPg0Se9sms 정말 재밌습니다!")
      if message.content.startswith('test'):                            
-                                 embed = discord.Embed(title="테스트", description="", color=0x00ff00)
-
-            await client.send_message(message.channel, embed=embed)
+          embed = discord.Embed(title="테스트", description="", color=0x00ff00)
+                   await client.send_message(message.channel, embed=embed)
 
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
