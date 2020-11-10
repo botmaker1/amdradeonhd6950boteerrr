@@ -1,9 +1,5 @@
 import discord
 import os
-import asyncio
-import datetime
-from parser import *
-
 client = discord.Client()
 
 @client.event
@@ -47,6 +43,10 @@ async def on_message(message):
         await client.send_message(message.channel, "가성비를 원하시면 엔비디아 대신 에이엠디로 가시는 걸 추천합니다.")
     if message.content.startswith('a4딸역'):
         await client.send_message(message.channel, "https://m.youtube.com/watch?v=fRPg0Se9sms 정말 재밌습니다!")
+     if message.content.startswith('test'):                            
+                                 embed = discord.Embed(title="테스트", description="", color=0x00ff00)
+
+            await client.send_message(message.channel, embed=embed)
 
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
