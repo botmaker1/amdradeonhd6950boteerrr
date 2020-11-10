@@ -1,5 +1,8 @@
 import discord
 import os
+import asyncio
+import datetime
+from parser import *
 
 client = discord.Client()
 
