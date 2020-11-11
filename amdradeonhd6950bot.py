@@ -11,6 +11,9 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name='', type=1))
 @client.event
 async def on_message(message):
+    if message.author == client.user: # 만약 메시지를 보낸 사람과 봇이 서로 같을 때
+    return
+
     if message.content.startswith('za'):
         await client.send_message(message.channel, "AMD Radeon HD 6950 Bot v7.0")  
         await client.send_message(message.channel, "명령어 목록입니다. 모든 명령어 앞에는 z를 입력하세요.")  
