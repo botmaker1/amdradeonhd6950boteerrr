@@ -34,15 +34,4 @@ async def on_message(message):
         await client.send_message(message.channel, "fuck(또는 Fuck) : Lily Allen의 Fuck You 음악 뮤비 유튜브 주소를 보여드립니다.")
         await client.send_message(message.channel, "z섹온비 : 섹온비 유튜브 주소를 띄웁니다.")
         await client.send_message(message.channel, "zijhs : Lonely Island의 I Just Had Sex 유튜브 뮤비 주소를 띄웁니다.")
-        await client.send_message(message.channel, "유튜브(또는 yt) : 야스봇 제작자의 유튜브 채널 주소를 띄웁니다.")
-        await client.send_message(message.channel, "zz숨목록 : 궁금하면 해보세요")
-        
-    elif message.content.startswith('zz숨목록'):
-        await client.send_message(message.channel, "zzhub : 그 허브 주소를 알려드립니다.")
-        await client.send_message(message.channel, "zzx : 그 Videos 주소를 알려드립니다.")
-    elif message.content.startswith('a글카'):
-        await client.send_message(message.channel, "가성비를 원하시면 엔비디아 대신 에이엠디로 가시는 걸 추천합니다.")
-    elif message.content.startswith('a4딸역'):
-        await client.send_message(message.channel, "https://m.youtube.com/watch?v=fRPg0Se9sms 정말 재밌습니다!")
-access_token = os.environ["BOT_TOKEN"]
-client.run(access_token)
+        await client.send_message(m
