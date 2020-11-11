@@ -1,7 +1,8 @@
 import discord
 import os
+from discord.ext import commands
 client = discord.Client()
-
+app = commands.Bot(command_prefix='z')
 @client.event
 async def on_ready():
     print("Login")
@@ -10,6 +11,9 @@ async def on_ready():
     print("--------------------")
     await client.change_presence(game=discord.Game(name='', type=1))
 @client.event
+@app.command()
+async def hello(ctx):
+    await ctx.send('Hello, World!')
 async def on_message(message):
     if message.content.startswith('za'):
         await client.send_message(message.channel, "AMD Radeon HD 6950 Bot v7.0")  
