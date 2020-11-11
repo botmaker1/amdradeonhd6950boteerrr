@@ -1,37 +1,28 @@
 import discord
-import os
-client = discord.Client()
+from discord.ext import commands, tasks
 
-@client.event
+bot = commands.Bot(command_prefix='!')
+
+'''
+봇이 반응을 해야하는 명령어인지 구분하기 위해 메세지 앞에 붙이는 접두사(prefix)를 설정합니다. 현재 !로 
+설정되어있습니다. 이곳을 변경시 해당 문자로 명령어를 시작해야합니다. ext에선 discord.Client() 클래스 처럼 
+str.startswith 메서드를 사용할 필요가 없습니다.
+'''
+
+@bot.event
 async def on_ready():
-    print("Login")
-    print(client.user.name)
-    print(client.user.id)
-    print("--------------------")
-    await client.change_presence(game=discord.Game(name='', type=1))
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    if message.content.startswith('za'):
-        await client.send_message(message.channel, "AMD Radeon HD 6950 Bot v7.0")  
-        await client.send_message(message.channel, "명령어 목록입니다. 모든 명령어 앞에는 z를 입력하세요.")  
-        await client.send_message(message.channel, "z오늘 : 오늘의 날짜를 알려드립니다.")  
-        await client.send_message(message.channel, "z시간 : 지금 시간을 알려드립니다.")  
-        await client.send_message(message.channel, "z숙제 : 현재 해야 할 숙제를 알려드립니다.")  
-        await client.send_message(message.channel, "z날씨 : 현재 전국 날씨를 알려드립니다.")  
-        await client.send_message(message.channel, "z(요일)시간표(ex. /월시간표) : 월요일 ~ 금요일까지의 시간표를 알려드립니다.")  
-        await client.send_message(message.channel, "z따라하기 (적을거) : 말을 따라합니다. /따라하기 뒤에 띄어쓰기를 해야 제대로 실행됩니다.")  
-        await client.send_message(message.channel, "z주사위 : 1부터 6까지 중 숫자 하나를 무작위로 뽑습니다.")  
-        await client.send_message(message.channel, "z유튭 : 이 봇 제작자의 유튜브 채널 주소를 알려드립니다.")  
-        await client.send_message(message.channel, "z코 : 중국산 코로나 관련 정보를 알려드립니다.")  
-        await client.send_message(message.channel, "z숨목록 : 숨겨진 명령어 목록을 알려드립니다.")  
-        await client.send_message(message.channel, "z역사 : 역사 시험범위 제외 부분을 알려드립니다.")  
-        await client.send_message(message.channel, "이 봇에 새로 넣을 거 있으면 추천 바랍니다.")  
+    print('Logged in as')
+    print(bot.user.name) # 토큰으로 로그인 된 bot 객체에서 discord.User 클래스를 가져온 뒤 name 프로퍼티를 출력
+    print(bot.user.id) # 위와 같은 클래스에서 id 프로퍼티 출력
+    print('------')
 
-    elif message.content.startswith('z숨목록'):
-        await client.send_message(message.channel, "숨겨진 명령어 목록입니다. 여기 명령어들은 대부분 슬래쉬가 필요 없습니다.(있는 것은 슬래쉬 쳐져있음)")
-        await client.send_message(message.channel, "fuck(또는 Fuck) : Lily Allen의 Fuck You 음악 뮤비 유튜브 주소를 보여드립니다.")
-        await client.send_message(message.channel, "z섹온비 : 섹온비 유튜브 주소를 띄웁니다.")
-        await client.send_message(message.channel, "zijhs : Lonely Island의 I Just Had Sex 유튜브 뮤비 주소를 띄웁니다.")
-        await client.send_message(m
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
+
+@bot.command(name="1234")
+async def _1234(ctx):
+    await ctx.send("5678")
+#파이썬 문법에 따라 함수를 만들 때에는 첫글자엔 숫자를 넣을 수 없는데, 숫자를 사용하고싶다면 함수 이름 자리는 다른 아무것으로 대체하고 괄호 안에 name=""을 사용하여 명령어를 수행할 수 있다.
+
+bot.run('token')
