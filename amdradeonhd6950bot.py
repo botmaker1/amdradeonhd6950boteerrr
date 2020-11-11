@@ -11,8 +11,8 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name='', type=1))
 @client.event
 async def on_message(message):
-    cmd = message.content.split(prefix)[1].split()[0] # 명령어를 저장한다
-    args = message.content.split(cmd)[1][1:].split() # 공백을 기준으로 args를 저장한다
+    if message.author == client.user:
+        return
     if message.content.startswith('za'):
         await client.send_message(message.channel, "AMD Radeon HD 6950 Bot v7.0")  
         await client.send_message(message.channel, "명령어 목록입니다. 모든 명령어 앞에는 z를 입력하세요.")  
