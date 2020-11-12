@@ -1,1 +1,1 @@
-worker: python amdradeonhd6950bot.py
+worker: python bot/amdradeonhd6950bot.py
